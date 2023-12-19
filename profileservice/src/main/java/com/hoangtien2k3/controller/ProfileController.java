@@ -39,7 +39,6 @@ public class ProfileController {
                 .body(profileService.createNewProfile(profileDTO));
     }
 
-
 //    @PostMapping
 //    public ResponseEntity<Mono<ProfileDTO>> createNewProfile(@RequestBody String requestStr){
 //        InputStream inputStream = ProfileController.class.getClassLoader().getResourceAsStream(Constant.JSON_REQ_CREATE_PROFILE);

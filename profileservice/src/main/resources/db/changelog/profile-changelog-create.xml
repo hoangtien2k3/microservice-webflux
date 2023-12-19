@@ -16,6 +16,7 @@
             </column>
         </createTable>
     </changeSet>
+
     <changeSet id="table-profile-add-column-email" author="profile" runAlways="true">
         <preConditions onFail="CONTINUE" onFailMessage="column email already exists in table profile">
             <not>

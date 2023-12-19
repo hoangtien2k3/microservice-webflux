@@ -19,6 +19,7 @@ import java.util.Objects;
 @Slf4j
 public class ProfileService {
     Gson gson = new Gson();
+
     @Autowired
     ProfileRepository profileRepository;
 
@@ -54,13 +55,13 @@ public class ProfileService {
                 .map(ProfileDTO::dtoToEntity)
                 .flatMap(profile -> profileRepository.save(profile))
                 .map(ProfileDTO::entityToDto)
-                .doOnError(throwable -> log.error(throwable.getMessage()))
                 .doOnSuccess(dto -> {
                     if(Objects.equals(dto.getStatus(), Constants.STATUS_PROFILE_PENDING)){
                         dto.setInitialBalance(profileDTO.getInitialBalance());
                         eventProducer.send(Constants.PROFILE_ONBOARDING_TOPIC,gson.toJson(dto)).subscribe();
                     }
-                });
+                })
+                .doOnError(throwable -> log.error(throwable.getMessage()));
     }
 
     public Mono<ProfileDTO> updateStatusProfile(ProfileDTO profileDTO){
