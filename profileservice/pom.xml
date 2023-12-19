@@ -19,6 +19,10 @@
 	</properties>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
 		</dependency>
@@ -53,13 +57,11 @@
 			<artifactId>r2dbc-mysql</artifactId>
 			<version>0.8.2.RELEASE</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.hoangtien2k3</groupId>
 			<artifactId>commonservice</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>

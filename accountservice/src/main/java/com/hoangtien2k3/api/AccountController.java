@@ -1,4 +1,4 @@
-package com.hoangtien2k3.controller;
+package com.hoangtien2k3.api;
 
 import com.hoangtien2k3.model.AccountDTO;
 import com.hoangtien2k3.service.AccountService;

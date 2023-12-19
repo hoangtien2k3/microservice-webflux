@@ -1,4 +1,4 @@
-package com.hoangtien2k3.controller;
+package com.hoangtien2k3.api;
 
 import com.google.gson.Gson;
 import com.hoangtien2k3.common.ValidateException;
