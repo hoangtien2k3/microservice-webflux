@@ -29,6 +29,7 @@ public class CommonConfiguration {
         SenderOptions<String, String> senderOptions = SenderOptions.create(props);
         return KafkaSender.create(senderOptions);
     }
+
     @Bean
     ReceiverOptions<String,String> receiverOptions(){
         Map<String, Object> propsReceiver = new HashMap<>();
@@ -39,4 +40,5 @@ public class CommonConfiguration {
 
         return  ReceiverOptions.create(propsReceiver);
     }
+
 }

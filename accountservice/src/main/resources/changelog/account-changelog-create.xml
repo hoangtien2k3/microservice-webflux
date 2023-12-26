@@ -29,7 +29,6 @@
                 <constraints nullable="false" />
             </column>
         </addColumn>
-
     </changeSet>
     <changeSet id="table-account-add-column-currency" author="account">
         <preConditions onFail="CONTINUE" onFailMessage="column currency already exists in table account">

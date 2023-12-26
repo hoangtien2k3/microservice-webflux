@@ -24,12 +24,12 @@ public class ProfileController {
     Gson gson = new Gson(); // convert Json -> DTO
 
     @GetMapping
-    public ResponseEntity<Flux<ProfileDTO>> getAllProfile(){
+    public ResponseEntity<Flux<ProfileDTO>> getAllProfile() {
         return ResponseEntity.ok(profileService.getAllProfile());
     }
 
     @GetMapping(value = "/checkDuplicate/{email}")
-    public ResponseEntity<Mono<Boolean>> checkDuplicate(@PathVariable String email){
+    public ResponseEntity<Mono<Boolean>> checkDuplicate(@PathVariable String email) {
         return ResponseEntity.ok(profileService.checkDuplicate(email));
     }
 
@@ -37,36 +37,19 @@ public class ProfileController {
     public ResponseEntity<Mono<ProfileDTO>> createNewProfile(@RequestBody ProfileDTO profileDTO) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(profileService.createNewProfile(profileDTO));
+
     }
 
-//    @PostMapping
-//    public ResponseEntity<Mono<ProfileDTO>> createNewProfile(@RequestBody String requestStr){
-//        InputStream inputStream = ProfileController.class.getClassLoader().getResourceAsStream(Constant.JSON_REQ_CREATE_PROFILE);
-//        CommonFunction.jsonValidate(inputStream,requestStr);
-//        return ResponseEntity.status(HttpStatus.CREATED)
-//                .body(profileService.createNewProfile(gson.fromJson(requestStr,ProfileDTO.class)));
-//    }
-
-    @PostMapping("/demo")
+    @PostMapping("/json")
     public ResponseEntity<Mono<ProfileDTO>> createNewProfile(@RequestBody String requestStr) {
-        if (requestStr == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
 
-        InputStream inputStream = ProfileController.class.getClassLoader().getResourceAsStream(Constant.JSON_REQ_CREATE_PROFILE);
-        if (inputStream == null) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+//        InputStream inputStream = ProfileController.class.getClassLoader().getResourceAsStream(Constant.JSON_REQ_CREATE_PROFILE);
+//
+//        CommonFunction.jsonValidate(inputStream, requestStr);
 
-        try {
-            CommonFunction.jsonValidate(inputStream, requestStr);
-        } catch (ValidateException e) {
-            return ResponseEntity.status(e.getStatus()).body(Mono.error(e));
-        }
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(profileService.createNewProfile(gson.fromJson(requestStr, ProfileDTO.class)));
 
-        ProfileDTO profileDTO = gson.fromJson(requestStr, ProfileDTO.class);
-        return ResponseEntity.status(HttpStatus.CREATED).body(profileService.createNewProfile(profileDTO));
     }
-
 
 }

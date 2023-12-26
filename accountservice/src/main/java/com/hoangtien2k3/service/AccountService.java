@@ -21,7 +21,9 @@ public class AccountService {
                 .map(AccountDTO::dtoToEntity)
                 .flatMap(account -> accountRepository.save(account))
                 .map(AccountDTO::entityToModel)
-                .doOnError(throwable -> log.error(throwable.getMessage()));
+                .doOnError(throwable ->
+                        log.error(throwable.getMessage())
+                );
     }
 
     public Mono<AccountDTO> checkBalance(String id){

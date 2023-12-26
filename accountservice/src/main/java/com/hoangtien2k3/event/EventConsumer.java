@@ -26,13 +26,15 @@ public class EventConsumer {
 
     public EventConsumer(ReceiverOptions<String,String> receiverOptions){
         KafkaReceiver.create(receiverOptions.subscription(Collections.singleton(Constants.PROFILE_ONBOARDING_TOPIC)))
-                .receive().subscribe(this::profileOnboarding);
+                .receive()
+                .subscribe(this::profileOnboarding);
     }
 
     public void profileOnboarding(ReceiverRecord<String,String> receiverRecord){
         log.info("Profile Onboarding event");
         ProfileDTO dto = gson.fromJson(receiverRecord.value(),ProfileDTO.class);
         AccountDTO accountDTO = new AccountDTO();
+        accountDTO.setId(String.valueOf(dto.getId()));
         accountDTO.setEmail(dto.getEmail());
         accountDTO.setReserved(0);
         accountDTO.setBalance(dto.getInitialBalance());

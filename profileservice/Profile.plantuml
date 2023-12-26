@@ -1,0 +1,10 @@
+@startuml
+class Profile {
+    @Id
+    private long id;
+    private String email;
+    private String name;
+    private String status;
+    private String role;
+}
+@enduml

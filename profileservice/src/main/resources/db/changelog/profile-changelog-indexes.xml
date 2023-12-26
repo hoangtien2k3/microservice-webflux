@@ -15,6 +15,7 @@
             <column name="name" />
         </createIndex>
     </changeSet>
+
     <changeSet author="profile" id="add-index-table-profile-column-email" runAlways="true">
         <preConditions onFail="CONTINUE" onFailMessage="index idx_profile_email already exists">
             <not>
@@ -25,4 +26,5 @@
             <column name="email" />
         </createIndex>
     </changeSet>
+
 </databaseChangeLog>
