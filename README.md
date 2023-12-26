@@ -62,6 +62,16 @@ Follow these steps to set up and run the backend:
 ## API Documentation
 Document the API endpoints and their functionalities. You can use tools like `Swagger` for automated `API documentation`.
 
+## Post Man:
+
+Profile Service Send Topic:
+
+<img width="1440" alt="image" src="https://github.com/hoangtien2k3qx1/microservice-webflux/assets/122768076/e60e7e97-f744-4823-b809-9ec3b347ad1a">
+
+Account Service Receiver Topic:
+
+<img width="1440" alt="image" src="https://github.com/hoangtien2k3qx1/microservice-webflux/assets/122768076/db84126a-6f7d-4c5d-bef8-f7dacb3a8b57">
+
 
 ## Doceker
 
